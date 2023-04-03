@@ -128,7 +128,7 @@ pub mod editor_macros {
     macro_rules! dont_run_in_editor {
         () => {
             if godot::engine::Engine::singleton().is_editor_hint() {
-                return
+                return;
             }
         };
     }
