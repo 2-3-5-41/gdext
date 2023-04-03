@@ -123,6 +123,24 @@ pub mod test {
 #[doc(hidden)]
 pub use godot_core::private;
 
+pub mod editor_macros {
+    #[macro_export]
+    macro_rules! dont_run_in_editor {
+        () => {
+            if godot::engine::Engine::singleton().is_editor_hint() {
+                return
+            }
+        };
+    }
+
+    #[macro_export]
+    macro_rules! editor_hint {
+        () => {
+            godot::engine::Engine::singleton().is_editor_hint()
+        };
+    }
+}
+
 /// Often-imported symbols.
 pub mod prelude {
     pub use super::bind::{godot_api, GodotClass};
@@ -141,4 +159,7 @@ pub mod prelude {
     // Make trait methods available
     pub use super::engine::NodeExt as _;
     pub use super::obj::EngineEnum as _;
+
+    // Basic minor quality of life macros.
+    pub use super::editor_macros::*;
 }

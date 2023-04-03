@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b5bhg53m6jdh5"]
+
+[node name="IsEditor" type="IsEditor"]

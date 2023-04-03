@@ -127,15 +127,6 @@ impl Main {
 
 #[godot_api]
 impl NodeVirtual for Main {
-    fn init(base: Base<Node>) -> Self {
-        Main {
-            mob_scene: PackedScene::new(),
-            score: 0,
-            base,
-            music: None,
-            death_sound: None,
-        }
-    }
 
     fn ready(&mut self) {
         // Note: this is downcast during load() -- completely type-safe thanks to type inference!
@@ -144,6 +135,16 @@ impl NodeVirtual for Main {
         self.mob_scene = load("res://Mob.tscn");
         self.music = Some(self.base.get_node_as("Music"));
         self.death_sound = Some(self.base.get_node_as("DeathSound"));
+    }
+
+    fn init(base: Base<Node>) -> Self {
+        Main {
+            mob_scene: PackedScene::new(),
+            score: 0,
+            base,
+            music: None,
+            death_sound: None,
+        }
     }
 }
 

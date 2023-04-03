@@ -1,0 +1,11 @@
+[package]
+name = "editor-hints"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+godot = { path = "../../../godot", default-features = false, features = ["formatted"] }
